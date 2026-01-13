@@ -38,3 +38,15 @@ module.exports.editTask = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 };
+
+module.exports.toggleDone = async (req, res) => {
+    try {
+        let { id } = req.params;
+        let task = await TaskModel.findById(id);
+        task.isdone = !task.isdone;
+        await task.save();
+        res.send(task);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};

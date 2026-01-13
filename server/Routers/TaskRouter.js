@@ -1,5 +1,5 @@
 let express = require("express");
-const { createTask,allTasks,deleteTask,editTask, updateTask } = require("../Controllers/TaskRouter");
+const { createTask,allTasks,deleteTask,editTask, updateTask, toggleDone } = require("../Controllers/TaskController");
 let router = express.Router();
 
 
@@ -16,5 +16,7 @@ router.delete("/delete/:id",deleteTask);
 router.get("/editTask/:id",editTask);
 
 router.post('/updateTask/:id',updateTask)
+
+router.post('/toggleDone/:id', toggleDone)
 
 module.exports = router;
